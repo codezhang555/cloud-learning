@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 通过构造方法注入属性 -->
+    <bean class="com.itz.cloud.model.User" id="user">
+        <constructor-arg name="id" value="1"/>
+        <constructor-arg name="username" value="zhang"/>
+        <constructor-arg name="address" value="nanjing"/>
+    </bean>
+
+    <!-- 通过set方法注入属性,最常用 -->
+    <bean class="com.itz.cloud.model.User" id="user2">
+        <property name="id" value="2"/>
+        <property name="username" value="cheng"/>
+        <property name="address" value="beijing"/>
+    </bean>
+
+    <!-- 命名空格注入属性，本质上还是set方法注入 -->
+    <bean class="com.itz.cloud.model.User" id="user3" p:username="zhang" p:address="nan" p:id="3"/>
+
+    <!-- 静态工厂注入实例-->
+<!--    <bean class="com.itz.cloud.OkHttpStaticFactory" factory-method="getInstance" id="okHttpClient"/>-->
+
+    <!-- 实例工厂注入实例-->
+    <bean class="com.itz.cloud.OkHttpFactory" id="okHttpFactory"/>
+    <bean class="okhttp3.OkHttpClient" factory-bean="okHttpFactory" factory-method="getInstance" id="okHttpClient"/>
+</beans>
