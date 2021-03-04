@@ -1,0 +1,17 @@
+server:
+  port: 8905
+spring:
+  application:
+    name: config-security-server
+  cloud:
+    config:
+      server:
+        git:
+          clone-on-start: true
+          uri: https://gitee.com/futureCodeNiu/springcloud-config.git
+          username: 15295730217
+          password: zkx19981203
+  security:
+    user:
+      name: zhang
+      password: 123456

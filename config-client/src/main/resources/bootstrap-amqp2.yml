@@ -1,0 +1,27 @@
+server:
+  port: 9005
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      profile: dev  #config客户端配置
+      label: dev   #启用配置后缀名称
+      name: config  #配置文件名称
+      discovery:
+        enabled: true
+        service-id: config-server
+  rabbitmq:
+    host: 47.100.62.153
+    port: 5672
+    username: zhang
+    password: zhang
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'refresh'

@@ -1,0 +1,24 @@
+#全局配置
+ribbon:
+  #服务请求连接超时时间（毫秒）
+  ConnectTimeout: 1000
+  #服务请求处理超时时间（毫秒）
+  ReadTimeout: 3000
+  #对超时请求启用重试机制
+  OkToRetryOnAllOperations: true
+  #切换重试实例的最大个数
+  MaxAutoRetriesNextServer: 1
+  # 切换实例后重试最大次数
+  MaxAutoRetries: 1
+  #修改负载均衡算法
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+#指定服务进行配置 与全局配置的区别就是ribbon节点挂在服务名称下面，如下是对ribbon-service调用user-service时的单独配置。
+user-service:
+  ribbon:
+    ConnectTimeout: 1000 #服务请求连接超时时间（毫秒）
+    ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
+    OkToRetryOnAllOperations: true #对超时请求启用重试机制
+    MaxAutoRetriesNextServer: 1 # 切换重试实例的最大个数
+    MaxAutoRetries: 1 # 切换实例后重试最大次数
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #修改负载均衡算法

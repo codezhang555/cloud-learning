@@ -1,0 +1,11 @@
+server:
+  port: 8102
+spring:
+  application:
+    name: eureka-client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://replica2:8003/eureka/,http://replica1:8002/eureka/
+    register-with-eureka: true
+    fetch-registry: true

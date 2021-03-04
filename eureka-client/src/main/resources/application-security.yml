@@ -1,0 +1,9 @@
+server:
+  port: 8103
+spring:
+  application:
+    name: eureka-client
+eureka:
+  client:
+    service-url:
+      defaultZone: http://zhang:123456@localhost:8004/eureka/
