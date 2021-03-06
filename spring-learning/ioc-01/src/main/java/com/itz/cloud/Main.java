@@ -15,6 +15,12 @@ public class Main {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        m1(context);
 //        m2(context);
+//        m3(context);
+        User u6 = context.getBean("user4", User.class);
+        System.out.println("u6 = " + u6);
+    }
+
+    private static void m3(ClassPathXmlApplicationContext context) {
         User u5 = context.getBean("user3", User.class);
         System.out.println("u5 = " + u5);
     }

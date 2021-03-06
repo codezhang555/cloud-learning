@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.itz.cloud.service" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+    </context:component-scan>
 
     <!-- 通过构造方法注入属性 -->
     <bean class="com.itz.cloud.model.User" id="user">
@@ -17,7 +22,7 @@
         <property name="address" value="beijing"/>
     </bean>
 
-    <!-- 命名空格注入属性，本质上还是set方法注入 -->
+    <!-- p 名称空间注入属性，本质上还是set方法注入 -->
     <bean class="com.itz.cloud.model.User" id="user3" p:username="zhang" p:address="nan" p:id="3"/>
 
     <!-- 静态工厂注入实例-->
@@ -26,4 +31,47 @@
     <!-- 实例工厂注入实例-->
     <bean class="com.itz.cloud.OkHttpFactory" id="okHttpFactory"/>
     <bean class="okhttp3.OkHttpClient" factory-bean="okHttpFactory" factory-method="getInstance" id="okHttpClient"/>
+
+    <!--复杂属性注入-->
+    <bean class="com.itz.cloud.model.User" id="user4">
+        <property name="id" value="2"/>
+        <property name="username" value="橙子"/>
+        <property name="address" value="beijing"/>
+        <property name="cat" ref="cat"/>
+        <!-- 数组注入-->
+        <property name="cats">
+            <array>
+                <ref bean="cat"/>
+                <bean class="com.itz.cloud.model.Cat" id="cat2">
+                    <property name="name" value="小黑"/>
+                    <property name="age" value="2"/>
+                </bean>
+            </array>
+        </property>
+        <!--集合注入-->
+        <property name="favorites">
+            <list>
+                <value>足球</value>
+                <value>篮球</value>
+            </list>
+        </property>
+        <!--map注入-->
+        <property name="details">
+            <map>
+                <entry key="gender" value="男"/>
+                <entry key="age" value="18"/>
+            </map>
+        </property>
+        <!--properties注入-->
+        <property name="info">
+            <props>
+                <prop key="phone">123456789</prop>
+            </props>
+        </property>
+    </bean>
+    <!--对象的注入-->
+    <bean class="com.itz.cloud.model.Cat" id="cat">
+        <property name="name" value="小白"/>
+        <property name="age" value="1"/>
+    </bean>
 </beans>

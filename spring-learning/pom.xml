@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>ioc-01</module>
+        <module>ioc02</module>
     </modules>
 
 
