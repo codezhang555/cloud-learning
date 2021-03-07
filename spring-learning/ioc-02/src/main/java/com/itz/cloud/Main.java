@@ -2,6 +2,7 @@ package com.itz.cloud;
 
 import com.itz.cloud.cmd.ShowCmd;
 import com.itz.cloud.config.JavaConfig;
+import com.itz.cloud.config.JavaConfig2;
 import com.itz.cloud.data.DataSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -18,7 +19,14 @@ public class Main {
     public static void main(String[] args) {
         //m1();
         //m2();
-        m3();
+        //m3();
+        m4();
+    }
+
+    private static void m4() {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(JavaConfig2.class);
+        DataSource prods = ctx.getBean("prods", DataSource.class);
+        System.out.println("prods = " + prods);
     }
 
     /**

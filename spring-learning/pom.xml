@@ -11,6 +11,10 @@
     <modules>
         <module>ioc-01</module>
         <module>ioc02</module>
+        <module>aware</module>
+        <module>aop-01</module>
+        <module>aop-02</module>
+        <module>jdbc</module>
     </modules>
 
 

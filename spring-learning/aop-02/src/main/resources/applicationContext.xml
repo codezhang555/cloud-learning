@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean class="com.itz.cloud.aop.LogAspectXml" name="logAspectXml"/>
+
+    <bean class="com.itz.cloud.aop.service.MyCalculatorImpl" id="myCalculator"/>
+
+    <aop:config>
+        <aop:pointcut id="pointcut" expression="execution(* com.itz.cloud.aop.service.*.*(..))"/>
+        <aop:aspect ref="logAspectXml">
+            <aop:before method="before" pointcut-ref="pointcut"/>
+            <aop:after method="after" pointcut-ref="pointcut"/>
+            <aop:after-returning method="returning" returning="r" pointcut-ref="pointcut"/>
+            <aop:after-throwing method="afterThrowing" throwing="e" pointcut-ref="pointcut"/>
+            <aop:around method="around" pointcut-ref="pointcut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
