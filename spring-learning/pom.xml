@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>ioc-01</module>
-        <module>ioc02</module>
+        <module>ioc-02</module>
         <module>aware</module>
         <module>aop-01</module>
         <module>aop-02</module>
