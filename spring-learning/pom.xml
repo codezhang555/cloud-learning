@@ -15,7 +15,6 @@
         <module>aop-01</module>
         <module>aop-02</module>
         <module>jdbc</module>
-        <module>mybatis-hello</module>
     </modules>
 
 
